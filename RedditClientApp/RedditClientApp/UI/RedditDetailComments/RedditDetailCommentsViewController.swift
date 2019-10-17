@@ -90,7 +90,16 @@ class RedditDetailCommentsViewController : BaseViewController, RedditDetailComme
         if indexPath.row == 0, let subreddit = feedChildrenListing
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedditHomeTableViewCell") as! RedditHomeTableViewCell
-            cell.redditHomeLabel.text = subreddit.data?.subreddit_name_prefixed
+            
+            if let sub = subreddit.data?.subreddit_name_prefixed
+            {
+                cell.redditHomeLabel.text = sub
+            }
+            else if let sub = subreddit.data?.subreddit_name_prefixed
+            {
+                cell.redditHomeLabel.text = sub
+            }
+           
             cell.redditHomeTitleLabel.text = subreddit.data?.title
             cell.redditHomeDateLabel.text = subreddit.data?.created_utc?.toDate().fromNow()
             cell.redditHomeUserLabel.text = subreddit.data?.author

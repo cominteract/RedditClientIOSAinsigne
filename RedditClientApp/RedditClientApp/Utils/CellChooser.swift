@@ -18,7 +18,15 @@ class CellChooser: NSObject {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RedditListTableViewCell", for: indexPath) as! RedditListTableViewCell
         if let count = categories?.count , (indexPath.row - count) >= 0, let result = filteredResults,  (indexPath.row - count) < result.count{
             let index = indexPath.row - count
-            cell.redditListLabel.text = result[index].data?.subreddit_name_prefixed
+            if let subreddit = result[index].data?.subreddit_name_prefixed
+            {
+                cell.redditListLabel.text = subreddit
+            }
+            else if let subreddit = result[index].data?.display_name_prefixed
+            {
+                cell.redditListLabel.text = subreddit
+            }
+            
             if let utc = result[index].data?.created_utc{
                 cell.redditLostYearLabel.text = "\(utc.toDate().fromNow())"
                 cell.redditListDateLabel.text = utc.toDate().toStringDay()
@@ -82,7 +90,15 @@ class CellChooser: NSObject {
         if let list = feedChildrenListing, list.count > indexPath.row{
             cell.delegate = redditFeed
             cell.index = indexPath.row
-            cell.redditBestPostLabel.text = list[indexPath.row].data?.subreddit_name_prefixed
+            if let subreddit = list[indexPath.row].data?.subreddit_name_prefixed
+            {
+                cell.redditBestPostLabel.text = subreddit
+            }
+            else if let subreddit = list[indexPath.row].data?.display_name_prefixed
+            {
+                cell.redditBestPostLabel.text = subreddit
+            }
+            
             cell.redditBestPostTitleLabel.text = list[indexPath.row].data?.public_description
             cell.redditBestPostTitleLabel.text = list[indexPath.row].data?.author
             cell.redditBestPostDisplayImageView.image = nil
@@ -122,7 +138,14 @@ class CellChooser: NSObject {
             cell.redditPopularPostHintLabel.isHidden = true
         }
         if let list = feedChildrenListing, list.count > indexPath.row{
-            cell.redditPopularLabel.text = list[indexPath.row].data?.subreddit_name_prefixed
+            if let subreddit = list[indexPath.row].data?.subreddit_name_prefixed
+            {
+                cell.redditPopularLabel.text = subreddit
+            }
+            else if let subreddit = list[indexPath.row].data?.display_name_prefixed
+            {
+                cell.redditPopularLabel.text = subreddit
+            }
             cell.redditPopularTitleLabel.text = list[indexPath.row].data?.title
             cell.redditPopularUserLabel.text = list[indexPath.row].data?.author
             if let hint = list[indexPath.row].data?.post_hint?.uppercased()

@@ -88,6 +88,7 @@ class RedditInboxServices: NSObject {
                     })
                 self.delegate?.retrievedInbox(listing:  inbox   )
                 self.delegate?.retrievedOverview(listing:  activity )
+                Config.updateRefreshedInbox(value: "Yes")
             }
         }
         retrieved.didRetrievedError = {
@@ -96,6 +97,7 @@ class RedditInboxServices: NSObject {
             self.delegate?.retrievedOverviewError(error: error)
             
         }
+        Config.updateRefreshedInbox(value: "Not")
         if let username = Config.getUser(){
             //self.apiManager.startAPI(endPoint: APIEndpoint.UserOverview, input: username, isJson: false, retrieved: retrieved)
             self.apiManager.startAPI(endPoint: APIEndpoint.MsgInbox, input: username, isJson: false, retrieved: retrieved)

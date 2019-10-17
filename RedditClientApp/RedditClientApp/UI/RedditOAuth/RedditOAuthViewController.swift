@@ -34,7 +34,7 @@ class RedditOAuthViewController : BaseViewController, RedditOAuthView {
     
     /// authTokenUpdateView when retrieving token is successful update the view
     func authTokenUpdateView() {
-        print("Token Success")
+        Config.appDelegate.openMainStart()
         
     }
 }

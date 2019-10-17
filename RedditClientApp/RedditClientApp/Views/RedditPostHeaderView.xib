@@ -30,9 +30,12 @@
                         <action selector="closeClicked:" destination="-1" eventType="touchUpInside" id="VTt-P1-WG7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GC8-mQ-3HK">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GC8-mQ-3HK" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
                     <rect key="frame" x="328" y="0.0" width="31" height="30"/>
                     <state key="normal" title="Post"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="post"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="postClicked:" destination="-1" eventType="touchUpInside" id="CG1-L5-xSe"/>
                     </connections>
@@ -44,11 +47,14 @@
                         <constraint firstAttribute="width" constant="24" id="zGR-cR-mej"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJE-ZE-G2t">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJE-ZE-G2t" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
                     <rect key="frame" x="58" y="35" width="145" height="30"/>
                     <state key="normal" title="Choose a community">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="chooseCommunity"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="communityClicked:" destination="-1" eventType="touchUpInside" id="ovE-Bj-rIy"/>
                     </connections>

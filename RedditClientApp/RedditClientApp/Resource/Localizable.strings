@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  RedditClientApp
+
+  Created by Andre Insigne on 17/10/2019.
+  Copyright © 2019 andreinsigne. All rights reserved.
+*/
+"titleHome" = "Home";
+"titleNews" = "News";
+"titlePopular" = "Popular";
+"searchPlaceholder" = "Search";
+"titleJoin" = "JOIN";
+"titleExplore" = "EXPLORE";
+"titlePostReddit" = "Post to Reddit";
+"titleText" = "Text";
+"titleLink" = "Link";
+"titleImage" = "Image";
+"titleVideo" = "Video";
+"chatUnavailable" = "Chats isn't available for reddit as of now";
+"activity" = "Activity";
+"messages" = "Messages";
+"beFirst" = "Be the first to know";
+"signUporLogin" = "Sign Up or Log-in to customize your notifications including chats and inbox";
+"login" = "LOG IN";
+"signup" = "SIGN UP";
+"chooseCommunity" = "Choose a community";
+"post" = "POST";
+"textTitle" = "An interesting title";
+"textPost" = "Your text post (Optional)";
+"http" = "http://";
+"share" = "Share";
+"chooseSome" = "Choose some interests to personalize your feed";

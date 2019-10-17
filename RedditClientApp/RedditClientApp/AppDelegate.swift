@@ -105,9 +105,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /// opens the main controller for reddit client sets the selected to home
+    func openMainStart()
+    {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        self.mainVC = storyboard.instantiateViewController(withIdentifier: "RedditMainViewController") as! RedditMainViewController
+        DispatchQueue.main.async {  [weak self] in
+                self?.window?.rootViewController = self?.mainVC
+                self?.mainVC?.selectedIndex = 0
+        }
+    }
+    
+    /// opens the main controller for reddit client sets the selected to home
     func openMain()
     {
-        
         DispatchQueue.main.async {  [weak self] in
             if self?.window?.rootViewController != self?.mainVC
             {

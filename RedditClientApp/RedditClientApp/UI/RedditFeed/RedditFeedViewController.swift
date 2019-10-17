@@ -183,7 +183,17 @@ class RedditFeedViewController : BaseViewController, RedditFeedView, UISearchBar
             let cell = tableView.dequeueReusableCell(withIdentifier: "RedditSearchTrendingTableViewCell") as! RedditSearchTrendingTableViewCell
             let index = indexPath.row - recentsSearch.count
             if let trending = trendingList?.data?.children, index >= 0, index < trending.count {
-                cell.redditSearchTrendingLabel.text = trending[index].data?.subreddit_name_prefixed
+                
+                if let sub = trending[index].data?.subreddit_name_prefixed
+                {
+                    cell.redditSearchTrendingLabel.text = sub
+                }
+                else if let sub = trending[index].data?.subreddit_name_prefixed
+                {
+                    cell.redditSearchTrendingLabel.text = sub
+                }
+                
+                
                 cell.redditSearchTrendingDescLabel.text = trending[index].data?.title
                 cell.redditSearchTrendingTitleLabel.text = trending[index].data?.link_flair_text
             }
@@ -358,6 +368,10 @@ class RedditFeedViewController : BaseViewController, RedditFeedView, UISearchBar
         emptySearchTableView.isHidden = true
         tableView.isHidden = false
         editedSearchTableView.isHidden = true
+        if Config.getRefreshed() == "Not"
+        {
+            presenter.refresh()
+        }
     }
     
     override func viewDidLoad() {
@@ -377,7 +391,7 @@ class RedditFeedViewController : BaseViewController, RedditFeedView, UISearchBar
         search?.searchResultsUpdater = self
         search?.searchBar.delegate = self
         search?.obscuresBackgroundDuringPresentation = false
-        search?.searchBar.placeholder = "Type something here to search"
+        search?.searchBar.placeholder = NSLocalizedString("searchPlaceholder", comment: "")
         if let search = search{
             search.hidesNavigationBarDuringPresentation = false
             search.searchBar.searchBarStyle = UISearchBar.Style.minimal
@@ -425,25 +439,18 @@ class RedditFeedViewController : BaseViewController, RedditFeedView, UISearchBar
         }
     }
     
-    /// openSubreddit opens the subreddit details (RedditDetailsViewController) modally using the cell's index
+    /// openAbout opens the about info (RedditAboutViewController) modally using the cell's index
     ///
     /// - Parameters:
     ///   - index: as Int
     ///   - tag: as Int UNUSED
-    func openSubreddit(index: Int, tag : Int) {
-        if let subreddit = getList()?[index].data?.subreddit_name_prefixed{
-            moveToDetails(sr: subreddit)
-        }
-    }
-    
-    /// openComments opens the comments (RedditDetailCommentsViewController) modally using the cell's index
-    ///
-    /// - Parameters:
-    ///   - index: as Int
-    ///   - tag: as Int UNUSED
-    func openComments(index: Int, tag : Int) {
-        if let child = getList()?[index], let subreddit = getList()?[index].data?.subreddit_name_prefixed, let id = getList()?[index].data?.id{
-            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+    func openAbout(index: Int, tag: Int) {
+        if let author = getList()?[index].data?.author
+        {
+            let vc = UINavigation.vc(identifier: UINavigation.RedditAbout) as! RedditAboutViewController
+            vc.author = author
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -452,18 +459,23 @@ class RedditFeedViewController : BaseViewController, RedditFeedView, UISearchBar
     /// - Parameters:
     ///   - index: as Int
     ///   - tag: as Int UNUSED
-    func openPreview(index: Int, tag : Int) {
+    func openPreview(index: Int, tag: Int) {
         let vc = UINavigation.vc(identifier: UINavigation.RedditPreview) as! RedditPreviewViewController
-        if let list = getList()
-        {
+        if let list = getList(){
             vc.image = cellChooser.getLink(list:  list , index: index)
             vc.previewDate = list[index].data?.created_utc?.toDate().fromNow()
-            vc.previewLabel = list[index].data?.subreddit_name_prefixed
+            if let subname = list[index].data?.subreddit_name_prefixed
+            {
+                vc.previewLabel = subname
+            }
+            else if let subname = list[index].data?.display_name_prefixed
+            {
+                vc.previewLabel = subname
+            }
             vc.user = list[index].data?.author
             vc.previewTitle = list[index].data?.title
             
-            if let comments = list[index].data?.num_comments, let upvotes =  list[index].data?.ups
-            {
+            if let comments = list[index].data?.num_comments, let upvotes =  list[index].data?.ups{
                 vc.comments = "\(comments)"
                 vc.upvote = "\(upvotes)"
             }
@@ -471,15 +483,33 @@ class RedditFeedViewController : BaseViewController, RedditFeedView, UISearchBar
         self.present(vc, animated: true, completion: nil)
     }
     
-    /// openAbout opens the about info (RedditAboutViewController) modally using the cell's index
+    /// openComments opens the comments (RedditDetailCommentsViewController) modally using the cell's index
     ///
     /// - Parameters:
     ///   - index: as Int
     ///   - tag: as Int UNUSED
-    func openAbout(index: Int, tag : Int) {
-        let vc = UINavigation.vc(identifier: UINavigation.RedditAbout) as! RedditAboutViewController
-        vc.author = getList()?[index].data?.author
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+    func openComments(index: Int, tag: Int) {
+        if let child = getList()?[index], let subreddit = getList()?[index].data?.subreddit_name_prefixed, let id = getList()?[index].data?.id{
+            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+        }
+        else if let child = getList()?[index], let subreddit = getList()?[index].data?.display_name_prefixed, let id = getList()?[index].data?.id
+        {
+            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+        }
+    }
+    
+    /// openSubreddit opens the subreddit details (RedditDetailsViewController) modally using the cell's index
+    ///
+    /// - Parameters:
+    ///   - index: as Int
+    ///   - tag: as Int UNUSED
+    func openSubreddit(index: Int, tag: Int) {
+        if let subreddit = getList()?[index].data?.subreddit_name_prefixed{
+            moveToDetails(sr: subreddit)
+        }
+        else if let subreddit = getList()?[index].data?.display_name_prefixed
+        {
+            moveToDetails(sr: subreddit)
+        }
     }
 }

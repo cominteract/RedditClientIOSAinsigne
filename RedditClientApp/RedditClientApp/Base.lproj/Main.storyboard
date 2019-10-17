@@ -92,12 +92,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose some interests to personalize your feed" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naU-Dh-eRg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naU-Dh-eRg" customClass="LocalisableLabel" customModule="RedditClientApp" customModuleProvider="target">
                                 <rect key="frame" x="44" y="95" width="286" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="chooseSome"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPJ-HQ-xc7">
                                 <rect key="frame" x="16" y="176" width="112" height="30"/>
@@ -144,9 +147,21 @@
                                 <rect key="frame" x="0.0" y="80" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="News" id="rvP-df-CWX"/>
-                                    <tabBarItem title="Home" id="HbQ-nA-sDA"/>
-                                    <tabBarItem title="Popular" id="KDS-to-nYM"/>
+                                    <tabBarItem title="" id="rvP-df-CWX" customClass="LocalisableTabBarItem" customModule="RedditClientApp" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleHome"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem title="" id="HbQ-nA-sDA" customClass="LocalisableTabBarItem" customModule="RedditClientApp" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleNews"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem title="" id="KDS-to-nYM" customClass="LocalisableTabBarItem" customModule="RedditClientApp" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleNews"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
                                 </items>
                             </tabBar>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yYg-wn-B0c">
@@ -496,7 +511,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomesignin" translatesAutoresizingMaskIntoConstraints="NO" id="eIj-U6-MR3">
                                 <rect key="frame" x="16" y="114" width="343" height="504"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats isn't available for reddit as of now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baL-3t-aKn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baL-3t-aKn" customClass="LocalisableLabel" customModule="RedditClientApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="42" width="375" height="71"/>
                                 <color key="backgroundColor" red="0.17917864250000001" green="0.51301098239999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -505,6 +520,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="chatUnavailable"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -587,8 +605,16 @@
                                     <constraint firstAttribute="height" constant="49" id="7Rs-Hz-biK"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="sbw-be-epp"/>
-                                    <tabBarItem systemItem="more" id="R5f-Ll-qG7"/>
+                                    <tabBarItem id="sbw-be-epp" customClass="LocalisableTabBarItem" customModule="RedditClientApp" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="activity"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem id="R5f-Ll-qG7" customClass="LocalisableTabBarItem" customModule="RedditClientApp" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="messages"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
                                 </items>
                             </tabBar>
                         </subviews>

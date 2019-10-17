@@ -230,14 +230,18 @@ class RedditDetailsViewController : BaseViewController, RedditDetailsView, UITab
     }
     
     
-    /// openComments opens the comments (RedditDetailCommentsViewController) modally using the cell's index
+    /// openAbout opens the about info (RedditAboutViewController) modally using the cell's index
     ///
     /// - Parameters:
     ///   - index: as Int
     ///   - tag: as Int UNUSED
-    func openComments(index: Int, tag : Int) {
-        if let child = posts?[index], let subreddit = posts?[index].data?.subreddit_name_prefixed, let id = posts?[index].data?.id{
-            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+    func openAbout(index: Int, tag: Int) {
+        if let author = posts?[index].data?.author
+        {
+            let vc = UINavigation.vc(identifier: UINavigation.RedditAbout) as! RedditAboutViewController
+            vc.author = author
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -246,18 +250,24 @@ class RedditDetailsViewController : BaseViewController, RedditDetailsView, UITab
     /// - Parameters:
     ///   - index: as Int
     ///   - tag: as Int UNUSED
-    func openPreview(index: Int, tag : Int) {
+    func openPreview(index: Int, tag: Int) {
         let vc = UINavigation.vc(identifier: UINavigation.RedditPreview) as! RedditPreviewViewController
-        if let list = posts
-        {
+        
+        if let list = posts{
             vc.image = cellChooser.getLink(list:  list , index: index)
             vc.previewDate = list[index].data?.created_utc?.toDate().fromNow()
-            vc.previewLabel = list[index].data?.subreddit_name_prefixed
+            if let subname = list[index].data?.subreddit_name_prefixed
+            {
+                vc.previewLabel = subname
+            }
+            else if let subname = list[index].data?.display_name_prefixed
+            {
+                vc.previewLabel = subname
+            }
             vc.user = list[index].data?.author
             vc.previewTitle = list[index].data?.title
             
-            if let comments = list[index].data?.num_comments, let upvotes =  list[index].data?.ups
-            {
+            if let comments = list[index].data?.num_comments, let upvotes =  list[index].data?.ups{
                 vc.comments = "\(comments)"
                 vc.upvote = "\(upvotes)"
             }
@@ -265,16 +275,19 @@ class RedditDetailsViewController : BaseViewController, RedditDetailsView, UITab
         self.present(vc, animated: true, completion: nil)
     }
     
-    /// openAbout opens the about info (RedditAboutViewController) modally using the cell's index
+    /// openComments opens the comments (RedditDetailCommentsViewController) modally using the cell's index
     ///
     /// - Parameters:
     ///   - index: as Int
     ///   - tag: as Int UNUSED
-    func openAbout(index: Int, tag : Int) {
-        let vc = UINavigation.vc(identifier: UINavigation.RedditAbout) as! RedditAboutViewController
-        vc.author = posts?[index].data?.author
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+    func openComments(index: Int, tag: Int) {
+        if let child = posts?[index], let subreddit = posts?[index].data?.subreddit_name_prefixed, let id = posts?[index].data?.id{
+            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+        }
+        else if let child = posts?[index], let subreddit = posts?[index].data?.display_name_prefixed, let id = posts?[index].data?.id
+        {
+            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+        }
     }
     
     /// openSubreddit opens the subreddit details (RedditDetailsViewController) modally using the cell's index

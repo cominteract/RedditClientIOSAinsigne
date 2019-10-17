@@ -85,9 +85,9 @@ class RedditFeedServices: NSObject {
     /// startLListing starts the api process to retrieve the home, popular, news feed, subreddits subscribed using the ListingRetrieved closure callback and the MeRetrieved to save the user info
     func startListing()
     {
+        var feedsCount = 0
         var feeds = [FeedListing]()
         let retrieved = ListingRetrieved()
-        var feedsCount = 0
         retrieved.didRetrievedListing = { [weak self]
             (list : FeedListing, endPoint : APIEndpoint) in
             print("Listing \(list.data?.children?.count) \(endPoint)")
@@ -110,18 +110,30 @@ class RedditFeedServices: NSObject {
                 feeds.append(list)
                 if feedsCount == feeds.count
                 {
+                    Config.updateRefreshed(value: "Yes")
                     self?.manageHomeFeed(feeds: feeds, dele: self?.delegate)
                 }
             }
             else if endPoint == APIEndpoint.Trending{
                 self?.delegate?.retrievedTrending(listing: list)
             }
-            else {
+            else if endPoint == APIEndpoint.Popular {
                 self?.delegate?.retrievedPopular(listing: list)
+            }
+            else {
+                self?.delegate?.retrievedHome(listing: list)
             }
         }
         retrieved.didRetrievedError = error()
-        apiManager.startAPI(endPoint: APIEndpoint.MineSubreddit, input:nil , isJson: false, retrieved: retrieved)
+        if authManager.isLogged()
+        {
+            apiManager.startAPI(endPoint: APIEndpoint.MineSubreddit, input:nil , isJson: false, retrieved: retrieved)
+        }
+        else
+        {
+            Config.updateRefreshed(value: "Not")
+            apiManager.startAPI(endPoint: APIEndpoint.Home , input:EndPoints.endpoint(endpoint: APIEndpoint.Best, input: nil)  , isJson: true, retrieved: retrieved)
+        }
         apiManager.startAPI(endPoint: APIEndpoint.Popular, input: EndPoints.endpoint(endpoint: APIEndpoint.Hot, input: nil) , isJson: true, retrieved: retrieved)
         apiManager.startAPI(endPoint: APIEndpoint.News, input: EndPoints.endpoint(endpoint: APIEndpoint.Hot, input: nil) , isJson: true, retrieved: retrieved)
 //        apiManager.startAPI(endPoint: APIEndpoint.Default, input: EndPoints.endpoint(endpoint: APIEndpoint.Best, input: nil) , isJson: true, retrieved: retrieved)
@@ -153,5 +165,15 @@ class RedditFeedServices: NSObject {
         }
         retrieved.didRetrievedError = error()
         apiManager.startAPI(endPoint: APIEndpoint.SearchSub, input:input, isJson: false, retrieved: retrieved)
+    }
+    
+    
+    /// refresh the home page when logged out
+    func refreshLoggedOut()
+    {
+        if Config.getOauthToken() != nil && authManager.isLogged()
+        {
+            startListing()
+        }
     }
 }

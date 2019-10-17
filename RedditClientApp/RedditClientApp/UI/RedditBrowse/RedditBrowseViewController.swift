@@ -79,10 +79,13 @@ class RedditBrowseViewController : BaseViewController, RedditBrowseView, UITable
     ///   - index: as Int
     ///   - tag: as Int UNUSED
     func openAbout(index: Int, tag: Int) {
-        let vc = UINavigation.vc(identifier: UINavigation.RedditAbout) as! RedditAboutViewController
-        vc.author = feedList?[index].data?.author
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+        if let author = feedList?[index].data?.author
+        {
+            let vc = UINavigation.vc(identifier: UINavigation.RedditAbout) as! RedditAboutViewController
+            vc.author = author
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     /// openPreview opens the preview (RedditPreviewViewController) modally using the cell's index
@@ -95,7 +98,14 @@ class RedditBrowseViewController : BaseViewController, RedditBrowseView, UITable
         if let list = feedList{
             vc.image = cellChooser.getLink(list:  list , index: index)
             vc.previewDate = list[index].data?.created_utc?.toDate().fromNow()
-            vc.previewLabel = list[index].data?.subreddit_name_prefixed
+            if let subname = list[index].data?.subreddit_name_prefixed
+            {
+                vc.previewLabel = subname
+            }
+            else if let subname = list[index].data?.display_name_prefixed
+            {
+                vc.previewLabel = subname
+            }
             vc.user = list[index].data?.author
             vc.previewTitle = list[index].data?.title
             
@@ -116,6 +126,10 @@ class RedditBrowseViewController : BaseViewController, RedditBrowseView, UITable
         if let child = feedList?[index], let subreddit = feedList?[index].data?.subreddit_name_prefixed, let id = feedList?[index].data?.id{
             moveToComments(sr: subreddit, feedChildListing: child , id: id)
         }
+        else if let child = feedList?[index], let subreddit = feedList?[index].data?.display_name_prefixed, let id = feedList?[index].data?.id
+        {
+            moveToComments(sr: subreddit, feedChildListing: child , id: id)
+        }
     }
     
     /// openSubreddit opens the subreddit details (RedditDetailsViewController) modally using the cell's index
@@ -125,6 +139,10 @@ class RedditBrowseViewController : BaseViewController, RedditBrowseView, UITable
     ///   - tag: as Int UNUSED
     func openSubreddit(index: Int, tag: Int) {
         if let subreddit = feedList?[index].data?.subreddit_name_prefixed{
+            moveToDetails(sr: subreddit)
+        }
+        else if let subreddit = feedList?[index].data?.display_name_prefixed
+        {
             moveToDetails(sr: subreddit)
         }
     }

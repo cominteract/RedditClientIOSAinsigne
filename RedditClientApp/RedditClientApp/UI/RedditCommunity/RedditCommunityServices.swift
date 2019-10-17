@@ -41,12 +41,17 @@ class RedditCommunityServices: NSObject {
         retrieved.didRetrievedListing = {
             (list : FeedListing, endPoint : APIEndpoint) in
             self.delegate?.retrievedSubscribed(listing: list)
+            Config.updateRefreshedCom(value: "Yes")
         }
         retrieved.didRetrievedError = {
             (error : Error, revoked : Bool) in
             print("Listing \(error.localizedDescription)")
             
         }
-        apiManager.startAPI(endPoint: APIEndpoint.MineSubreddit, input: nil, isJson: false, retrieved: retrieved)
+        Config.updateRefreshedCom(value: "Not")
+        if authManager.isLogged()
+        {
+            apiManager.startAPI(endPoint: APIEndpoint.MineSubreddit, input: nil, isJson: false, retrieved: retrieved)
+        }
     }
 }

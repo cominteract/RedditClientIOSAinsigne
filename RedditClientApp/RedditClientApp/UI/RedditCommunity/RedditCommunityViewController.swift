@@ -105,6 +105,13 @@ class RedditCommunityViewController : BaseViewController, RedditCommunityView, U
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if Config.getRefreshedCom() == "Not"
+        {
+            presenter.startSubscribedListing()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         injector.inject(viewController: self)

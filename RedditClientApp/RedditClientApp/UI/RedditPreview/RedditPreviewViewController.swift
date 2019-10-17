@@ -49,12 +49,13 @@ class RedditPreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redditPreviewTitleLabel.text = previewLabel
+        
         redditPreviewUserLabel.text = user
         redditPreviewTitleLabel.text = previewTitle
         redditPreviewDateLabel.text = previewDate
         redditPreviewUpvoteLabel.text = upvote
         redditPreviewCommentLabel.text = comments
+        redditPreviewLabel.text = previewLabel
         if let image = image
         {
             redditPreviewImageView.downloadedFrom(link: image)

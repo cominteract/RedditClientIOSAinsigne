@@ -8,6 +8,50 @@
 
 import UIKit
 
+class LocalisableLabel: UILabel {
+    
+    @IBInspectable var localisedKey: String? {
+        didSet {
+            guard let key = localisedKey else { return }
+            text = NSLocalizedString(key, comment: "")
+        }
+    }
+}
+
+class LocalisableTabBarItem: UITabBarItem {
+    
+    @IBInspectable var localisedKey: String? {
+        didSet {
+            guard let key = localisedKey else { return }
+            title = NSLocalizedString(key, comment: "")
+            
+        }
+    }
+}
+
+class LocalisableTextField: UITextField {
+    
+    @IBInspectable var localisedKey: String? {
+        didSet {
+            guard let key = localisedKey else { return }
+            placeholder = NSLocalizedString(key, comment: "")
+            
+        }
+    }
+}
+
+class LocalisableButton: UIButton {
+    
+    @IBInspectable var localisedKey: String? {
+        didSet {
+            guard let key = localisedKey else { return }
+            //title = NSLocalizedString(key, comment: "")
+            setTitle(NSLocalizedString(key, comment: ""), for: UIControl.State.normal)
+        }
+    }
+}
+
+
 class Extensions: NSObject {
 
 }

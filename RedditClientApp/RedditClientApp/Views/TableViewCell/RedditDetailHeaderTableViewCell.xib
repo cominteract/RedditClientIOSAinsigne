@@ -61,15 +61,18 @@
                             <tabBarItem systemItem="more" id="urL-ik-kDQ"/>
                         </items>
                     </tabBar>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5g3-g6-yKq">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5g3-g6-yKq" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
                         <rect key="frame" x="299" y="120" width="60" height="30"/>
                         <color key="backgroundColor" red="1" green="0.40331074280000001" blue="0.1944976387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="pM0-bw-Pzs"/>
                         </constraints>
-                        <state key="normal" title="JOIN">
+                        <state key="normal">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleJoin"/>
+                        </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr4-2M-zXh">
                         <rect key="frame" x="19" y="183" width="340" height="41"/>
@@ -80,15 +83,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avN-Aj-4nm">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avN-Aj-4nm" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
                         <rect key="frame" x="16" y="232" width="70" height="30"/>
                         <color key="backgroundColor" red="1" green="0.40331074282175616" blue="0.19449763874524117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="vbR-m1-qfJ"/>
                         </constraints>
-                        <state key="normal" title="Explore">
+                        <state key="normal">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleExplore"/>
+                        </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
                 <constraints>

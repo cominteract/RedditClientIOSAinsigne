@@ -32,11 +32,14 @@
                             <constraint firstAttribute="width" constant="24" id="rUa-E2-QZN"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV2-qX-vP3">
-                        <rect key="frame" x="266" y="331" width="38" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV2-qX-vP3" customClass="LocalisableLabel" customModule="RedditClientApp" customModuleProvider="target">
+                        <rect key="frame" x="304" y="331" width="0.0" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="share"/>
+                        </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE HONG KONG, Digital, Me, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4I-Vd-UnA">
                         <rect key="frame" x="14" y="66" width="238.5" height="17"/>
@@ -80,7 +83,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-a1-Nlf">
-                        <rect key="frame" x="234" y="327" width="24" height="24"/>
+                        <rect key="frame" x="272" y="327" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="2fU-Zv-8BG"/>
                             <constraint firstAttribute="height" constant="24" id="tNG-Gf-oDY"/>

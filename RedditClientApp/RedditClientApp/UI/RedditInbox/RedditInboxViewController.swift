@@ -96,7 +96,12 @@ class RedditInboxViewController : BaseViewController, RedditInboxView, UITabBarD
         {
             emptyLogsView.isHidden = true
             redditLogsLoginView.isHidden = true
+            if Config.getRefreshedInbox() == "Not"
+            {
+                presenter.startAPI()
+            }
         }
+        
     }
     
     override func viewDidLoad() {
@@ -110,6 +115,7 @@ class RedditInboxViewController : BaseViewController, RedditInboxView, UITabBarD
         presenter.startAPI()
     }
 
+    
     /// retrievedOverviewUpdateView when overview info of user is retrieved update the view
     ///
     /// - Parameter listing: as [FeedChildrenListing] overview info of user

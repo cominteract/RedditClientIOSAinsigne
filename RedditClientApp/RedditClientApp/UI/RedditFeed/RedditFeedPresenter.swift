@@ -77,11 +77,18 @@ protocol RedditFeedPresenter {
     ///
     /// - Returns: as Bool to identify if user is logged
     func isLogged() -> Bool
+    
+    /// refresh the api when logged out
+    func refresh()
 }
 
 /// RedditFeedPresenter implementation based on the presenter protocol
 class RedditFeedPresenterImplementation : RedditFeedPresenter, RedditFeedDelegate {
 
+    /// refresh the api when logged out
+    func refresh() {
+        service.refreshLoggedOut()
+    }
     /// retrievedSearched after retrieving the listings subreddit searched
     ///
     /// - Parameter listing: as FeedListing the listing retrieved

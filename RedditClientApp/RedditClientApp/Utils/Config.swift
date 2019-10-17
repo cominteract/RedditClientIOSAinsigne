@@ -22,6 +22,9 @@ struct Config {
     public static let username_key = "username"
     public static let reftoken_key = "refoauthtoken"
     public static let refdate_key = "refdate"
+    public static let ref_key = "refkey"
+    public static let refcom_key = "refcomkey"
+    public static let refinbox_key = "refinboxkey"
     public static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     /// Application verison, be updated by Info.plist later.
     let version: String = "0.0.0"
@@ -36,7 +39,6 @@ struct Config {
     var userAgent: String {
         return "ios:" + bundleIdentifier + ":v" + version + "(by /u/" + developerName + ")"
     }
-    
     
     /// updates the recent search results
     ///
@@ -64,8 +66,6 @@ struct Config {
         let recents = defaults.string(forKey: recentsearch_key)?.components(separatedBy: ",")
         return recents
     }
-    
-    
     
     /// updates the new interest
     ///
@@ -174,6 +174,67 @@ struct Config {
     {
         let defaults = UserDefaults.standard
         return defaults.string(forKey: refdate_key)
+    }
+    
+    /// updates the refresh availability
+    ///
+    /// - Parameters:
+    ///   - value: new value to update as String
+    ///   - key: the identifier from the Keys as String
+    static func updateRefreshed(value : String)
+    {
+        let defaults = UserDefaults.standard
+        defaults.set(value, forKey: ref_key)
+    }
+    
+    /// returns the refreshavailability
+    ///
+    /// - Returns: rerfreshed as String after saving
+    static func getRefreshed() -> String?
+    {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: ref_key)
+    }
+    
+    /// updates the refresh com availability
+    ///
+    /// - Parameters:
+    ///   - value: new value to update as String
+    ///   - key: the identifier from the Keys as String
+    static func updateRefreshedCom(value : String)
+    {
+        let defaults = UserDefaults.standard
+        defaults.set(value, forKey: refcom_key)
+    }
+    
+    /// returns the refresh com availability
+    ///
+    /// - Returns: rerfreshed as String after saving
+    static func getRefreshedCom() -> String?
+    {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: refcom_key)
+    }
+    
+    
+    /// updates the refresh inbox availability
+    ///
+    /// - Parameters:
+    ///   - value: new value to update as String
+    ///   - key: the identifier from the Keys as String
+    static func updateRefreshedInbox(value : String)
+    {
+        let defaults = UserDefaults.standard
+        defaults.set(value, forKey: refinbox_key)
+    }
+    
+    /// returns the refresh inbox availability
+    ///
+    /// - Returns: rerfreshed as String after saving
+    static func getRefreshedInbox() -> String?
+    {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: refinbox_key)
     }
     
     

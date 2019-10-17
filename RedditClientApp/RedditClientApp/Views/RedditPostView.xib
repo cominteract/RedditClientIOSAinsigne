@@ -28,40 +28,52 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-Vk-Mob">
-                    <rect key="frame" x="34" y="113" width="307" height="30"/>
+                    <rect key="frame" x="45" y="113" width="285" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8h-fp-gNu">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8h-fp-gNu" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                            <state key="normal" title="Text">
+                            <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleText"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="postTextClicked:" destination="-1" eventType="touchUpInside" id="VCu-fs-9n0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkd-Mq-arc">
-                            <rect key="frame" x="85" y="0.0" width="40" height="30"/>
-                            <state key="normal" title="Video">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkd-Mq-arc" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
+                            <rect key="frame" x="85" y="0.0" width="30" height="30"/>
+                            <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleVideo"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="postVideoClicked:" destination="-1" eventType="touchUpInside" id="jL9-m8-ZD9"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGL-Z7-jVH">
-                            <rect key="frame" x="180" y="0.0" width="42" height="30"/>
-                            <state key="normal" title="Image">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGL-Z7-jVH" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
+                            <rect key="frame" x="170" y="0.0" width="30" height="30"/>
+                            <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleImage"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="postImageClicked:" destination="-1" eventType="touchUpInside" id="x9H-p0-MCC"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjH-rg-Saz">
-                            <rect key="frame" x="277" y="0.0" width="30" height="30"/>
-                            <state key="normal" title="Link">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjH-rg-Saz" customClass="LocalisableButton" customModule="RedditClientApp" customModuleProvider="target">
+                            <rect key="frame" x="255" y="0.0" width="30" height="30"/>
+                            <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titleLink"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="postLinkClicked:" destination="-1" eventType="touchUpInside" id="Qss-nl-Kz6"/>
                             </connections>
@@ -102,11 +114,14 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post to Reddit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXB-9H-bgD">
-                    <rect key="frame" x="136.5" y="16.5" width="102.5" height="19.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXB-9H-bgD" customClass="LocalisableLabel" customModule="RedditClientApp" customModuleProvider="target">
+                    <rect key="frame" x="187.5" y="36" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="titlePostReddit"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwK-w7-ABD">
                     <rect key="frame" x="172" y="143" width="30" height="30"/>
