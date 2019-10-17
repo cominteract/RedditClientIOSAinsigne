@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RedditFilterTableViewCell" rowHeight="57" id="KGk-i7-Jjw" customClass="RedditFilterTableViewCell" customModule="RedditClientApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redditfilter" translatesAutoresizingMaskIntoConstraints="NO" id="mdn-c5-fKt">
+                        <rect key="frame" x="16" y="11" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="Sn7-Yq-WwH"/>
+                            <constraint firstAttribute="width" constant="36" id="XsS-Ye-dFm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The hottest post on the internet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyt-ec-tAC">
+                        <rect key="frame" x="60" y="31" width="180.5" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vt2-th-wE8">
+                        <rect key="frame" x="60" y="11" width="52.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mdn-c5-fKt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Jg9-gc-MBZ"/>
+                    <constraint firstItem="Vt2-th-wE8" firstAttribute="leading" secondItem="mdn-c5-fKt" secondAttribute="trailing" constant="8" id="NA0-A9-qnf"/>
+                    <constraint firstItem="cyt-ec-tAC" firstAttribute="top" secondItem="Vt2-th-wE8" secondAttribute="bottom" constant="2" id="VwO-hI-bKs"/>
+                    <constraint firstItem="Vt2-th-wE8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="bqa-lu-aoo"/>
+                    <constraint firstItem="mdn-c5-fKt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="wfk-ak-pwY"/>
+                    <constraint firstItem="cyt-ec-tAC" firstAttribute="leading" secondItem="mdn-c5-fKt" secondAttribute="trailing" constant="8" id="xtI-0q-Lh0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="redditFilterDescriptionLabel" destination="cyt-ec-tAC" id="fgm-aj-sIw"/>
+                <outlet property="redditFilterImageView" destination="mdn-c5-fKt" id="Neb-ET-sfX"/>
+                <outlet property="redditFilterLabel" destination="Vt2-th-wE8" id="ntI-0l-WEY"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="129.98500749625188"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="redditfilter" width="225" height="225"/>
+    </resources>
+</document>
