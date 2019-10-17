@@ -3,7 +3,7 @@ Develop an application that can search and show Reddit and their posts - a simpl
 
 
 # Design and implement an app as a long term project
-https://github.com/sonsongithub/reddift
+
 
 As a tech lead of an IOS team. I planned ahead and chose to create the app based on a certain architecture. Either mvp or mvvm or viper which I have templates of. The idea is to make use of a boilerplate that is easy to follow and can and would be unit tested as demonstrated within the app as well. I chose mvp in favor of the others as mvvm typically requires doing the reactive way and data binding not always but most view it as that and since the requirements require not to use open source libraries which I prefer as well. It is the best architecture for the specs afaik
 
@@ -42,6 +42,9 @@ I have provided samples of how to test the various functionalities within the ap
 RedditClientAppTests -> RedditClientRetrievedTest
                         RedditClientPresenterTest
                         RedditClientManagerTest
+
+If planning to update the client id please check the Config
+RedditClientApp -> Utils -> Config
 
 Should there be any questions feel free to ask.
 
