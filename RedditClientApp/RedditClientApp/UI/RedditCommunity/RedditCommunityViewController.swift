@@ -55,7 +55,7 @@ class RedditCommunityViewController : BaseViewController, RedditCommunityView, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let srname = subscribedList?.data?.children?[indexPath.row].data?.display_name, chooser
+        if chooser, let srname = subscribedList?.data?.children?[indexPath.row].data?.display_name
         {
             delegate?.chosenSR(srname: srname )
             self.dismiss(animated: true, completion: nil)

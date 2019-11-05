@@ -43,7 +43,8 @@ RedditClientAppTests -> RedditClientRetrievedTest
                         RedditClientPresenterTest
                         RedditClientManagerTest
 
-If planning to update the client id please check the Config
+If planning to update the client id please check the Config. It should work if you replaced the developer name the client id and/or the package. It should work just fine
+
 RedditClientApp -> Utils -> Config
 
 Should there be any questions feel free to ask.
